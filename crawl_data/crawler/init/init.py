@@ -18,7 +18,7 @@ class InitSelenium:
         self.driver = None
         self.init_selenium()
 
-    def execute_script(self):
+    def execute_script(self, link_user: str):
         print("InitSelenium class")
         pass
 
@@ -28,8 +28,7 @@ class InitSelenium:
         try:
             platform_ = platform.system().lower()
             if platform_ in ['linux', 'darwin']:
-                executable_path = os.path.join(os.getcwd(), "chromedriver")
-                print(executable_path)
+                executable_path = os.path.join(os.getcwd(), 'chromedriver')
                 self.driver = webdriver.Chrome(executable_path=executable_path, options=options)
             else:
                 executable_path = os.path.join(os.getcwd(), "chromedriver.exe")
@@ -41,7 +40,7 @@ class InitSelenium:
                     )
             self.quit(True)
                     
-    def get_options(self):
+    def get_options(self) -> Options:
         options = Options()
 
         #  Code to disable notifications pop up of Chrome Browser

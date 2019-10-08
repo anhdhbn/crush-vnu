@@ -1,7 +1,7 @@
 from crawler.init.init import InitSelenium
 
 class CommonUtilities(InitSelenium):
-    def execute_script(self):
+    def execute_script(self, link_user: str):
         print("CommonUtilities class")
         pass
 
