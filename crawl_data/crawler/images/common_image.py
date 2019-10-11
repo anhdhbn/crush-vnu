@@ -19,6 +19,7 @@ class CommonImage(CommonUtilities):
         return None
 
     def parse_position_from_str(self, style):
+        print(style)
         return 0.0, 0.0, 0.0, 0.0
     
     def parse_tagbox(self, tag):
