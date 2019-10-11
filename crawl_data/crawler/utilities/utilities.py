@@ -123,6 +123,12 @@ class CommonUtilities(InitSelenium):
         except NoSuchElementException:
             return None
 
+    def parse_tagbox(self, tag):
+        try:
+            return tag.get_attribute("style")
+        except:
+            return None
+
     def get_download_images_url(self, img_links):
         urls = []
 
@@ -139,7 +145,12 @@ class CommonUtilities(InitSelenium):
 
                         if img_url.find('.gif') == -1:
                             valid_url_found = True
-                            urls.append(img_url)
+                            tag_elements = self.safe_get_elements_by_css_selector(".fbPhotosPhotoTagboxBase")
+                            if tag_elements is not None:
+                                if len(tag_elements) > 0:
+                                    tag_box = [self.parse_tagbox(tag) for tag in tag_elements]
+                                    tag_box = [tag for tag in tag_box if tag is not None]
+                                    urls.append((img_url, tag_box))
                 except Exception as e:
                     print(e)
             else:
@@ -185,8 +196,3 @@ class CommonUtilities(InitSelenium):
             print("Exception (image_downloader):", e)
 
         return img_names
-
-if __name__ == "__main__":
-    test = CommonUtilities("test", "test")
-    test.execute_script()
-    test.quit()
