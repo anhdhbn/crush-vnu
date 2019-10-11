@@ -30,7 +30,10 @@ class CommonImage(CommonUtilities):
         id =  tag.get_attribute("id")
 
         width, height, left, top = self.parse_position_from_str(style)
-        result['id'] = id.split(":")[-1] if id != '' else None
+        if id.find('tag') != -1:
+            result['id'] = id.split(":")[-1]
+        else:
+            result['id'] = None
         result['width'] = width
         result['height'] = height
         result['left'] = left
