@@ -3,6 +3,7 @@ import platform
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 from crawler.init.download import download_driver
+from crawler.init.constants import *
 
 class InitSelenium:
     def __init__(self, email, password, total_scrolls = 5000, scroll_time = 5):
@@ -17,6 +18,7 @@ class InitSelenium:
         self.time_limit = 0
         self.driver = None
         self.init_selenium()
+        self.timeout_second = 30
 
     def execute_script(self, link_user: str):
         print("InitSelenium class")

@@ -1,5 +1,13 @@
 from crawler.images.all_photos import AllPhoto
 
-abc = AllPhoto("test", "test")
+with open('credentials.txt') as f:
+    email = f.readline().split('"')[1]
+    password = f.readline().split('"')[1]
 
-abc.execute_script()
+    if not (email and password):
+        print("Your email or password is missing. Kindly write them in credentials.txt")
+        exit()
+
+abc = AllPhoto(email, password)
+abc.login()
+abc.execute_script("https://www.facebook.com/profile.php?id=100007770918742")
