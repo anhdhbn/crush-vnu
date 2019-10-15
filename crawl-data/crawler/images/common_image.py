@@ -20,10 +20,10 @@ class CommonImage(CommonUtilities):
 
     def parse_position_from_str(self, style):
         string = style.split(";")
-        width = string[0].split(": ")[1]
-        height = string[1].split(": ")[1]
-        left = string[2].split(": ")[1]
-        top = string[3].split(": ")[1]
+        width = float(string[0].split(": ")[1])
+        height = float(string[1].split(": ")[1])
+        left = float(string[2].split(": ")[1])
+        top = float(string[3].split(": ")[1])
         return width, height, left, top
     
     def parse_tagbox(self, tag):
