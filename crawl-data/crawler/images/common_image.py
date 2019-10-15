@@ -19,8 +19,12 @@ class CommonImage(CommonUtilities):
         return None
 
     def parse_position_from_str(self, style):
-        print(style)
-        return 0.0, 0.0, 0.0, 0.0
+        string = style.split(";")
+        width = float(string[0].split(": ")[1].strip("%"))
+        height = float(string[1].split(": ")[1].strip("%"))
+        left = float(string[2].split(": ")[1].strip("%"))
+        top = float(string[3].split(": ")[1].strip("%"))
+        return width, height, left, top
     
     def parse_tagbox(self, tag):
         result = {}
