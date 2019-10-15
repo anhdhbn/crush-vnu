@@ -66,7 +66,8 @@ class CommonImage(CommonUtilities):
                                 if len(tag_elements) > 0:
                                     tag_box = [self.parse_tagbox(tag) for tag in tag_elements]
                                     tag_box = [tag for tag in tag_box if tag is not None]
-                                    urls.append((img_url, tag_box))
+                                    if(len(tag_box) != 0):
+                                        urls.append((img_url, tag_box))
                 except Exception as e:
                     print(e)
             else:

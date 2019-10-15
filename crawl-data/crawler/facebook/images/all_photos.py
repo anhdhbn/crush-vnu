@@ -1,6 +1,7 @@
-from crawler.images.photo_all import PhotoAll
-from crawler.images.photo_of import PhotoOf
+from crawler.facebook.images.photo_all import PhotoAll
+from crawler.facebook.images.photo_of import PhotoOf
 from crawler.init.constants import IMAGE
+from jobqueue.producer import facebook
 
 class AllPhoto(PhotoAll, PhotoOf):
     def execute_script(self, link_user: str):
@@ -8,10 +9,12 @@ class AllPhoto(PhotoAll, PhotoOf):
         elements = self.safe_get_elements_by_css_selector(IMAGE['CSS_TAB'])
         if elements is None:
             raise Exception('Error in get all photo')
+        result = []
         if len(elements) == 4:
-            PhotoOf.execute_script(self, link_user)
+            result = result + PhotoOf.execute_script(self, link_user)
         
-        PhotoAll.execute_script(self, link_user)
+        result = result + PhotoAll.execute_script(self, link_user)
+        facebook.download_images_from_fb(result)
     
     def get_link_all_photos(self, link_user: str) -> str:
         original_link = self.create_original_link(link_user)
