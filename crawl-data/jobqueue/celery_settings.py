@@ -17,7 +17,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERYBEAT_SCHEDULE = {
     'auto-scan-socks-by-day': {
         'task': 'app.tasks.scan_socks_by_day',
-        'schedule': crontab(day="*"),
+        'schedule': crontab(day_of_week="*"),
     },
     'auto-scan-socks-by-day': {
         'task': 'app.tasks.scan_socks_by_hour',
