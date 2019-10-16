@@ -1,4 +1,4 @@
-from crawler.facebook.images.all_photos import AllPhoto
+from crawler.facebook.crawl_all import AllFacebook
 
 with open('credentials.txt') as f:
     email = f.readline().split('"')[1]
@@ -8,7 +8,8 @@ with open('credentials.txt') as f:
         print("Your email or password is missing. Kindly write them in credentials.txt")
         exit()
 
-abc = AllPhoto(email, password)
-abc.login()
-abc.execute_script("https://www.facebook.com/profile.php?id=100007770918742")
+abc = AllFacebook(email, password)
+if abc.login() is True:
+    abc.execute_script("https://www.facebook.com/profile.php?id=100007770918742")
+
 abc.quit()

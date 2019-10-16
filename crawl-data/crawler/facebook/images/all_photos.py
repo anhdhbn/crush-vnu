@@ -1,7 +1,6 @@
 from crawler.facebook.images.photo_all import PhotoAll
 from crawler.facebook.images.photo_of import PhotoOf
 from crawler.init.constants import IMAGE
-from jobqueue.producer import facebook
 
 class AllPhoto(PhotoAll, PhotoOf):
     def execute_script(self, link_user: str):
@@ -14,6 +13,7 @@ class AllPhoto(PhotoAll, PhotoOf):
             result = result + PhotoOf.execute_script(self, link_user)
         
         result = result + PhotoAll.execute_script(self, link_user)
+        from jobqueue.producer import facebook
         facebook.download_images_from_fb(result)
     
     def get_link_all_photos(self, link_user: str) -> str:
