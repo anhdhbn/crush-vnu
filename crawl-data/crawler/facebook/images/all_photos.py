@@ -1,6 +1,6 @@
 from crawler.facebook.images.photo_all import PhotoAll
 from crawler.facebook.images.photo_of import PhotoOf
-from crawler.init.constants import IMAGE
+from crawler.facebook.constants import IMAGE
 
 class AllPhoto(PhotoAll, PhotoOf):
     def execute_script(self, link_user: str):

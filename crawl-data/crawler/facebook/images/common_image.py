@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 
 from crawler.facebook.utilities import CommonUtilities
-from crawler.init.constants import IMAGE
+from crawler.facebook.constants import IMAGE
 
 
 class CommonImage(CommonUtilities):

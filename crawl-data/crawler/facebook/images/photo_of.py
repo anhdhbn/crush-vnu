@@ -1,5 +1,5 @@
 from crawler.facebook.images.common_image import CommonImage
-from crawler.init.constants import IMAGE
+from crawler.facebook.constants import IMAGE
 import sys
 
 class PhotoOf(CommonImage):

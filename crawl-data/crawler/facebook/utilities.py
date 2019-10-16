@@ -58,7 +58,8 @@ class CommonUtilities(InitSelenium):
         if "News Feed" not in self.driver.page_source:
             self.quit()
             return False
-        else: return True
+        else: 
+            return True
 
 
     def check_block(self):
@@ -110,7 +111,8 @@ class CommonUtilities(InitSelenium):
         options.add_argument("--mute-audio")
         options.add_argument("--start-maximized")
         options.add_argument('user-data-dir={}'.format(self.cookie_dir))
+        options.add_argument("--window-size=1920,1080")
         # options.setBinary("/path/to/other/chrome/binary")
         # options.add_argument("--headless")
-
+        # options.add_argument('--no-sandbox')
         return options
