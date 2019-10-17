@@ -23,5 +23,5 @@ def scan_proxies_by_hour(class_site):
 
 @app.task(name='jobqueue.tasks.check_fresh')
 def check_fresh(proxy):
-    from jobqueue.consumer.proxies import proxies
+    from jobqueue.consumer import proxies
     return proxies.check_fresh(proxy)
