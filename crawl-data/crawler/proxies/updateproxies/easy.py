@@ -19,6 +19,7 @@ class EasyUpdate(UpdateProxies):
                 'username': '',
                 'password': ''
             } for (ip, port) in result]
+            print(result[0])
             [check_fresh(proxy) for proxy in result]
 
         

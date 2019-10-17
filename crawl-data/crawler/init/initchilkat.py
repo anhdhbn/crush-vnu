@@ -13,15 +13,17 @@ class InitChilkat:
         self.http.put_SaveCookies(True)
         self.http.put_SendCookies(True)
         if proxy is not None:
-            self.http.put_SocksVersion(proxy['version'])
-            self.http.put_SocksHostname(proxy['ip'])
-            self.http.put_SocksPort(proxy['ip'])
-            self.http.put_SocksUsername(proxy['username'])
-            self.http.put_SocksPassword(proxy['password'])
             self.version = proxy['version']
             self.ip = proxy['ip']
+            self.port = proxy['port']
             self.username = proxy['username']
             self.password = proxy['password']
+            self.http.put_SocksVersion(self.version)
+            self.http.put_SocksHostname(self.ip)
+            self.http.put_SocksPort(self.port)
+            self.http.put_SocksUsername(self.username)
+            self.http.put_SocksPassword(self.password)
+            
 
     def unlock_chilkat(self):
         self.glob = chilkat.CkGlobal()
