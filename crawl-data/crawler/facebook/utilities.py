@@ -1,4 +1,4 @@
-from crawler.init.init import InitSelenium
+from crawler.init.initselenium import InitSelenium
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait

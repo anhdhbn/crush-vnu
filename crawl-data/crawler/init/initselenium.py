@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
-from crawler.init.download import download_driver
+from crawler.init.downloadselenium import download_driver
 
 class InitSelenium:
     def __init__(self, total_scrolls = 5000, scroll_time = 5):
@@ -97,9 +97,3 @@ class InitSelenium:
             return self.driver.find_element_by_id(elem_id)
         except NoSuchElementException:
             return None
-
-
-if __name__ == "__main__":
-    test = InitSelenium("test", "test")
-    test.execute_script()
-    test.quit()
