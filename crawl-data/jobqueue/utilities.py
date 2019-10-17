@@ -28,11 +28,7 @@ def create_schedule():
     for class_ in update_classes:
         result[f'auto-scan-proxies-by-hour-{class_.__class__.__name__}'] = {
             'task': 'jobqueue.tasks.scan_proxies_by_hour',
-            'schedule': crontab(hou="*/2"),
+            'schedule': crontab(hour="*/2"),
             'args' : (class_,)
         }
-    result['test'] = {
-        'task': 'jobqueue.tasks.test',
-        'schedule': timedelta(seconds=1)
-    }
     return result
