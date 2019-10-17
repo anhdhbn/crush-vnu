@@ -4,7 +4,7 @@ from celery.schedules import crontab
 from datetime import timedelta
 
 class EasyUpdate(UpdateProxies):
-    conjob = 
+    time = crontab(hour="*/2")
     def execute_script(self):
         from jobqueue.producer.proxies import check_fresh
         sites = [
