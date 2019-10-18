@@ -1,5 +1,4 @@
-from crawler.proxies.dailyproxies.dailyproxies import DailyProxies
-from crawler.proxies.updateproxies.updateproxies import UpdateProxies
+from crawler.proxies.proxies import GetProxies
 
 def inheritors(klass):
     subclasses = set()
@@ -13,19 +12,11 @@ def inheritors(klass):
     return subclasses
 
 def create_schedule():
-    daily_classes = inheritors(DailyProxies)
-    update_classes = inheritors(UpdateProxies)
+    proxy_classes = inheritors(GetProxies)
     result = {}
-    for class_ in daily_classes:
-        result[f'auto-scan-proxies-by-day-{class_.__class__.__name__}'] = {
-            'task': 'jobqueue.tasks.scan_proxies_by_day',
-            'schedule': class_.time,
-            'args' : (class_,)
-        }
-
-    for class_ in update_classes:
-        result[f'auto-scan-proxies-by-hour-{class_.__class__.__name__}'] = {
-            'task': 'jobqueue.tasks.scan_proxies_by_hour',
+    for class_ in proxy_classes:
+        result[f'auto-scan-proxies-{class_.__name__}'] = {
+            'task': 'jobqueue.tasks.scan_proxies',
             'schedule': class_.time,
             'args' : (class_,)
         }

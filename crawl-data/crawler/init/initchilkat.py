@@ -31,9 +31,3 @@ class InitChilkat:
         if (success != True):
             print(glob.lastErrorText())
             sys.exit()
-
-        status = self.glob.get_UnlockStatus()
-        if (status == 2):
-            print("Unlocked using purchased unlock code.")
-        else:
-            print("Unlocked in trial mode.")
