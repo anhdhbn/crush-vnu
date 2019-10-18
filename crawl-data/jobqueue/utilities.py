@@ -1,4 +1,5 @@
 from crawler.proxies.proxies import GetProxies
+from crawler.proxies.sites import *
 
 def inheritors(klass):
     subclasses = set()
