@@ -20,4 +20,5 @@ def create_schedule():
             'schedule': class_.time,
             'args' : (class_,)
         }
+    print(result)
     return result
