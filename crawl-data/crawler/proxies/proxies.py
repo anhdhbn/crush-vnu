@@ -14,6 +14,7 @@ class Proxies:
         self.version = version
         self.username = username
         self.password = password
+        self.hash = f"{self.ip}:{self.port}"
 
     def conver_to_object(self):
         return {
@@ -24,4 +25,8 @@ class Proxies:
             'password': self.password
         }
     def __eq__(self, other):
-        return f"{self.ip}:{self.port}" == f"{other.ip}:{other.port}"
+        return self.hash == other.hash
+    def __hash__(self):
+        return hash(self.hash)
+    def __repr__(self):
+        return str(self.hash)
