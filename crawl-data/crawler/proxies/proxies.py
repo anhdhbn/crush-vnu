@@ -10,8 +10,8 @@ class GetProxies(InitChilkat):
 class Proxies:
     def __init__(self, ip, port, version, username="", password=""):
         self.ip = ip
-        self.port = port
-        self.version = version
+        self.port = int(port)
+        self.version = int(version)
         self.username = username
         self.password = password
         self.hash = f"{self.ip}:{self.port}"
@@ -19,7 +19,7 @@ class Proxies:
     def conver_to_object(self):
         return {
             'ip': self.ip,
-            'port': int(self.port),
+            'port': self.port,
             'version': self.version,
             'username': self.username,
             'password': self.password
