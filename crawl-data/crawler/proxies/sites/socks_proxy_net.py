@@ -1,10 +1,10 @@
-from crawler.proxies.proxies import GetProxies
+from crawler.proxies.proxies import GetProxies, Proxies
 import re
 from celery.schedules import crontab
 from datetime import timedelta
 
 class SocksProxyNet(GetProxies):
-    time = crontab(minute="*")
+    time = crontab(minute="*/5")
     def execute_script(self):
         site = "https://www.socks-proxy.net/"
         content = self.http.quickGetStr(site)
