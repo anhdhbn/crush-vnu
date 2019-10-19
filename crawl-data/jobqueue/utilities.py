@@ -19,7 +19,14 @@ def create_schedule():
         result[f'auto-scan-proxies-{class_.__name__}'] = {
             'task': 'jobqueue.tasks.scan_proxies',
             'schedule': class_.time,
-            'args' : (class_,)
+            'args' : (class_.__name__,)
         }
     print(result)
     return result
+
+def find_class_by_name(name):
+    proxy_classes = inheritors(GetProxies)
+    for proxy_class in proxy_classes:
+        if proxy_class.__name__ == name:
+            return proxy_class
+    return None
