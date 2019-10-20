@@ -4,7 +4,7 @@ from celery.schedules import crontab
 from datetime import timedelta
 
 class SocksProxyNet(GetProxies):
-    time = crontab(minute="*/5")
+    time = crontab(minute="*/10")
     def execute_script(self):
         site = "https://www.socks-proxy.net/"
         content = self.http.quickGetStr(site)
