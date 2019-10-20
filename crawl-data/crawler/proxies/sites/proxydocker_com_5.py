@@ -8,7 +8,7 @@ from datetime import datetime
 
 class ProxyDocker5(GetProxies):
     time = crontab(day_of_week="*")
-    def execute_script(self):
+    def get_proxies(self):
         # site = "https://www.proxydocker.com/en/api/proxylist/"
         i = 0
         self.stop = False
@@ -19,7 +19,8 @@ class ProxyDocker5(GetProxies):
             temp = self.get_result(resp.bodyStr())
             i = i + 1
             result = result + temp
-        self.add_proxies_to_queue(result)
+        return result
+        
     def make_req(self, page):
         req = chilkat.CkHttpRequest()
         req.put_HttpVerb("POST")

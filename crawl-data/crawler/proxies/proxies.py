@@ -6,6 +6,10 @@ class GetProxies(InitChilkat):
         result = self.remove_duplicates(arr)
         from jobqueue.producer.proxies import check_fresh
         [check_fresh(proxy.conver_to_object()) for proxy in result]
+    def execute_script(self):
+        self.add_proxies_to_queue(self.get_proxies())
+    def get_proxies(self):
+        pass
 
 class Proxies:
     def __init__(self, ip, port, version, username="", password=""):
