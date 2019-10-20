@@ -4,7 +4,7 @@ from celery.schedules import crontab
 from datetime import timedelta
 
 class MyProxyCom4(GetProxies):
-    time = crontab(minute="*/5")
+    time = crontab(="*")
     def execute_script(self):
         site = "https://www.my-proxy.com/free-socks-4-proxy.html"
         content = self.http.quickGetStr(site)

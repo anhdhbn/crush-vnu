@@ -7,7 +7,7 @@ import json
 from datetime import datetime
 
 class ProxyDocker4(GetProxies):
-    time = crontab(day="*")
+    time = crontab(day_of_week="*")
     def execute_script(self):
         # site = "https://www.proxydocker.com/en/api/proxylist/"
         i = 0
