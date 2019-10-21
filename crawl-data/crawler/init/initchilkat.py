@@ -6,6 +6,8 @@ class InitChilkat:
     def __init__(self, proxy=None):
         self.unlock_chilkat()
         self.init_http(proxy)
+        self.timeout = 10
+        self.resp = chilkat.CkHttpResponse()
 
     def init_http(self, proxy=None):
         self.http = chilkat.CkHttp()
@@ -24,6 +26,9 @@ class InitChilkat:
             self.http.put_SocksUsername(self.username)
             self.http.put_SocksPassword(self.password)
             
+    def load_response(self, task):
+        success = self.resp.LoadTaskResult(task)   
+        return self.resp.bodyStr()
 
     def unlock_chilkat(self):
         self.glob = chilkat.CkGlobal()
