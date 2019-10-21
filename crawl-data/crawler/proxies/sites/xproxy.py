@@ -3,7 +3,7 @@ import re
 from celery.schedules import crontab
 
 class Xproxy(GetProxies):
-    time = crontab(minute="*/10")
+    time = crontab(minute="*")
     def get_proxies(self):
         site = "https://www.xroxy.com/free-proxy-lists/?port=&type=All_socks&ssl=&country=&latency=&reliability="
         content = self.http.quickGetStr(site)
