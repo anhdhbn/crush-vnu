@@ -22,7 +22,7 @@ class InitChilkat:
             self.port = proxy['port']
             self.username = proxy['username']
             self.password = proxy['password']
-            if self.version == 4 or self.version == 5
+            if self.version == 4 or self.version == 5:
                 self.http.put_SocksVersion(self.version)
                 self.http.put_SocksHostname(self.ip)
                 self.http.put_SocksPort(self.port)
