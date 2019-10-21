@@ -4,6 +4,7 @@ import chilkat
 
 class CheckFresh(InitChilkat):
     def execute_script(self):
+        return self.http.quickGetStr(f"http://ip-api.com/json/{self.ip}")
         start = time.time()
         task = self.http.QuickGetObjAsync(f"http://ip-api.com/json/{self.ip}")
         task.Run()
