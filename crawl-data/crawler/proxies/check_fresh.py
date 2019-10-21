@@ -1,12 +1,9 @@
 from crawler.init.initchilkat import InitChilkat
-import time
-import chilkat
 
 class CheckFresh(InitChilkat):
     def execute_script(self):
         # return self.http.quickGetStr(f"http://ip-api.com/json/{self.ip}")
-        start = time.time()
-        task = self.http.QuickGetObjAsync(f"http://ip-api.com/json/{self.ip}")
+        task = self.http.QuickGetObjAsync(f"http://ip-api.com/json/")
         task.Run()
         status = task.Wait(self.timeout * 1000)
         if(status):
