@@ -36,7 +36,7 @@ class InitChilkat:
             
     def load_response(self, task):
         success = self.resp.LoadTaskResult(task)   
-        return self.resp.bodyStr(), self.resp.LastErrorText()
+        return self.resp.bodyStr(), self.resp.lastErrorText()
 
     def unlock_chilkat(self):
         self.glob = chilkat.CkGlobal()
