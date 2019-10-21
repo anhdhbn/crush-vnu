@@ -21,7 +21,6 @@ def create_schedule():
             'schedule': class_.time,
             'args' : (class_.__name__,)
         }
-    print(result)
     return result
 
 def find_class_by_name(name):

@@ -12,4 +12,5 @@ class Hidester(GetProxies):
         result = [ Proxies(proxy['IP'], proxy['PORT'], 
             '5' if proxy['type'] == 'socks5' else ('4' if proxy['type'] == 'socks4' else 'http') ) for proxy in proxies]
         result = [ proxy for proxy in result if proxy.version != "http"]
+        print(result)
         return result
