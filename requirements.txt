@@ -3,3 +3,4 @@ redis
 flower
 requests
 selenium
+js2py

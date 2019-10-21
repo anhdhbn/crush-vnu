@@ -15,7 +15,7 @@ class Proxies:
     def __init__(self, ip, port, version, username="", password=""):
         self.ip = ip
         self.port = int(port)
-        self.version = int(version)
+        self.version = version
         self.username = username
         self.password = password
         self.hash = f"{self.ip}:{self.port}"
@@ -24,7 +24,7 @@ class Proxies:
         return {
             'ip': self.ip,
             'port': self.port,
-            'version': self.version,
+            'version': int(self.version) if self.version.isdigit() else self.version,
             'username': self.username,
             'password': self.password
         }
@@ -33,4 +33,4 @@ class Proxies:
     def __hash__(self):
         return hash(self.hash)
     def __repr__(self):
-        return str(self.hash)
+        return str(f"{self.hash}:{self.version}")

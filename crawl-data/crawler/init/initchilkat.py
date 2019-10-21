@@ -1,6 +1,8 @@
 import chilkat
 import sys
 import os
+import time
+import js2py
 
 class InitChilkat:
     def __init__(self, proxy=None):
@@ -20,11 +22,17 @@ class InitChilkat:
             self.port = proxy['port']
             self.username = proxy['username']
             self.password = proxy['password']
-            self.http.put_SocksVersion(self.version)
-            self.http.put_SocksHostname(self.ip)
-            self.http.put_SocksPort(self.port)
-            self.http.put_SocksUsername(self.username)
-            self.http.put_SocksPassword(self.password)
+            if self.version.isdigit():
+                self.http.put_SocksVersion(self.version)
+                self.http.put_SocksHostname(self.ip)
+                self.http.put_SocksPort(self.port)
+                self.http.put_SocksUsername(self.username)
+                self.http.put_SocksPassword(self.password)
+            else:
+                self.http.put_ProxyDomain(self.ip)
+                self.http.put_ProxyPort(self.port)
+                self.http.put_ProxyLogin(self.username)
+                self.http.put_ProxyPassword(self.password)
             
     def load_response(self, task):
         success = self.resp.LoadTaskResult(task)   
