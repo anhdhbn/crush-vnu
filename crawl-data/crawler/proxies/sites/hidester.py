@@ -10,5 +10,5 @@ class Hidester(GetProxies):
         body = self.http.quickGetStr("https://hidester.com/proxydata/php/data.php?mykey=data&offset=0&limit=100000&orderBy=latest_check&sortOrder=DESC")
         proxies = json.loads(body)
         result = [ Proxies(proxy['IP'], proxy['PORT'], 
-            5 if proxy['type'] == 'socks5' else (4 if proxy['type'] == 'socks4' else 'http') ) for proxy in proxies]
+            '5' if proxy['type'] == 'socks5' else ('4' if proxy['type'] == 'socks4' else 'http') ) for proxy in proxies]
         return result

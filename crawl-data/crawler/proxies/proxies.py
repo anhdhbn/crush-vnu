@@ -24,7 +24,7 @@ class Proxies:
         return {
             'ip': self.ip,
             'port': self.port,
-            'version': int(self.version) if self.version.isdigit() else self.version,
+            'version': int(self.version) if self.version.isdigit() == int else self.version,
             'username': self.username,
             'password': self.password
         }
