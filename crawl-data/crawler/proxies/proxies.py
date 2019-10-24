@@ -4,8 +4,8 @@ class GetProxies(InitChilkat):
         return list(set(arr))
     def add_proxies_to_queue(self, arr):
         result = self.remove_duplicates(arr)
-        from jobqueue.producer.proxies import check_fresh
-        [check_fresh(proxy.conver_to_object()) for proxy in result]
+        from jobqueue.producer.proxies import check_fresh_go
+        [check_fresh_go(proxy.conver_to_object()) for proxy in result]
     def execute_script(self):
         self.add_proxies_to_queue(self.get_proxies())
     def get_proxies(self):
@@ -19,6 +19,10 @@ class Proxies:
         self.username = username
         self.password = password
         self.hash = f"{self.ip}:{self.port}"
+        if(self.username == ""  and self.password == ""):
+            self.proxyURI = f"socks{self.version}://{self.username}:{self.username}@{self.ip}:{self.port}?timeout={self.timeout}s"
+        else:
+            self.proxyURI = f"socks{self.version}://{self.ip}:{self.port}?timeout={self.timeout}s"
 
     def conver_to_object(self):
         return {
@@ -26,7 +30,8 @@ class Proxies:
             'port': self.port,
             'version': int(self.version) if self.version.isdigit() == int else self.version,
             'username': self.username,
-            'password': self.password
+            'password': self.password,
+            'proxyURI': self.proxyURI
         }
     def __eq__(self, other):
         return self.hash == other.hash

@@ -22,3 +22,6 @@ def scan_proxies(class_name):
 def check_fresh(proxy):
     from jobqueue.consumer import proxies
     return proxies.check_fresh(proxy)
+
+def check_fresh_go(proxy):
+    app.send_task("jobqueue.tasks.check_fresh_go", (proxy,))
