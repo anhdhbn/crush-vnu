@@ -4,7 +4,7 @@ class GetProxies(InitChilkat):
         return list(set(arr))
     def add_proxies_to_queue(self, arr):
         result = self.remove_duplicates(arr)
-        from jobqueue.producer.proxies import check_fresh_go
+        from jobqueue.proxies.tasks import check_fresh_go
         [check_fresh_go(proxy.conver_to_object()) for proxy in result]
     def execute_script(self):
         self.add_proxies_to_queue(self.get_proxies())

@@ -12,7 +12,7 @@ def inheritors(klass):
                 work.append(child)
     return subclasses
 
-def create_schedule():
+def create_schedule_proxies():
     proxy_classes = inheritors(GetProxies)
     result = {}
     for class_ in proxy_classes:
