@@ -4,7 +4,7 @@ from jobqueue.utilities import inheritors
 app = Celery("proxies")
 app.config_from_object("jobqueue.proxies.celery_settings")
 
-@app.task(name='jobqueue.tasks.scan_proxies')
+@app.task(name='jobqueue.proxies.tasks.scan_proxies')
 def scan_proxies(class_name):
     from jobqueue.utilities import find_class_by_name
     class_ = find_class_by_name(class_name)

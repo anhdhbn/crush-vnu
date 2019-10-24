@@ -24,7 +24,7 @@ func main() {
 		200, // number of workers
 	)
 
-	cli.Register("jobqueue.tasks.check_fresh_go", checkFresh)
+	cli.Register("jobqueue.proxies.tasks.check_fresh_go", checkFresh)
 	cli.StartWorker()
 	time.Sleep(100 * time.Second)
 
