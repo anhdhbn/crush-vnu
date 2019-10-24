@@ -13,4 +13,4 @@ def scan_proxies(class_name):
         get_proxy.execute_script()
 
 def check_fresh_go(proxy):
-    app.send_task("jobqueue.tasks.check_fresh_go", (proxy,))
+    app.send_task("jobqueue.proxies.tasks.check_fresh_go", (proxy,))
