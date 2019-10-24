@@ -18,6 +18,7 @@ class Proxies:
         self.version = version
         self.username = username
         self.password = password
+        self.timeout = 10
         self.hash = f"{self.ip}:{self.port}"
         if(self.username == ""  and self.password == ""):
             self.proxyURI = f"socks{self.version}://{self.username}:{self.username}@{self.ip}:{self.port}?timeout={self.timeout}s"
